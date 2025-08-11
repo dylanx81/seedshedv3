@@ -6,11 +6,20 @@ import { PlantList } from "./_components/posts";
 import { EmptyState } from "@/components/EmptyState";
 import { StaggeredReveal } from "@/components/StaggeredReveal";
 import { AnnouncerProvider } from "@/components/Announcer";
+import { FloatingActionButton } from "@/components/FloatingActionButton";
+import { ScanSeedPacketModal } from "@/components/ScanSeedPacketModal";
+import { ScanBarcodeModal } from "@/components/ScanBarcodeModal";
+import { AddPlantModal } from "@/components/AddPlantModal";
 
 export default function GardenDashboard() {
   const [hasPlants, setHasPlants] = useState(false); // Mock state - would come from actual data
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
+  
+  // Modal states
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isScanModalOpen, setIsScanModalOpen] = useState(false);
+  const [isBarcodeModalOpen, setIsBarcodeModalOpen] = useState(false);
 
   const filters = [
     { id: "all", label: "All Plants" },
@@ -20,8 +29,7 @@ export default function GardenDashboard() {
   ];
 
   const handleAddFirstPlant = () => {
-    // TODO: Navigate to camera/scan page
-    console.log("Navigate to camera");
+    setIsScanModalOpen(true);
   };
 
   const handleTrySample = () => {
@@ -30,8 +38,7 @@ export default function GardenDashboard() {
   };
 
   const handleAddManually = () => {
-    // TODO: Open manual add modal
-    console.log("Open manual add modal");
+    setIsAddModalOpen(true);
   };
 
   return (
@@ -137,13 +144,11 @@ export default function GardenDashboard() {
 
           {/* Floating Action Button */}
           {hasPlants && (
-            <button
-              onClick={handleAddFirstPlant}
-              className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-sage-600 text-white shadow-lg transition-all hover:bg-sage-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sage-500 focus:ring-offset-2"
-              aria-label="Add new plant"
-            >
-              <Plus className="h-6 w-6" />
-            </button>
+            <FloatingActionButton
+              onScanSeedPacket={() => setIsScanModalOpen(true)}
+              onScanBarcode={() => setIsBarcodeModalOpen(true)}
+              onEnterManually={() => setIsAddModalOpen(true)}
+            />
           )}
 
           {/* Footer */}
@@ -154,6 +159,22 @@ export default function GardenDashboard() {
           </StaggeredReveal>
         </div>
       </div>
+
+      {/* Modals */}
+      <AddPlantModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+      />
+
+      <ScanSeedPacketModal
+        isOpen={isScanModalOpen}
+        onClose={() => setIsScanModalOpen(false)}
+      />
+
+      <ScanBarcodeModal
+        isOpen={isBarcodeModalOpen}
+        onClose={() => setIsBarcodeModalOpen(false)}
+      />
     </AnnouncerProvider>
   );
 }

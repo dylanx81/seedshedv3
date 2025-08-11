@@ -12,7 +12,7 @@ import { ScanBarcodeModal } from "@/components/ScanBarcodeModal";
 import { AddPlantModal } from "@/components/AddPlantModal";
 
 export default function GardenDashboard() {
-  const [hasPlants, setHasPlants] = useState(false); // Mock state - would come from actual data
+  const [hasPlants, setHasPlants] = useState(true); // Mock state - would come from actual data
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
   

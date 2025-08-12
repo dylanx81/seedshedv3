@@ -131,7 +131,8 @@ export function ScanSeedPacketModal({
       // TODO: Call OCR processing endpoint with the public URL
       console.log('Image uploaded successfully:', uploadResult.publicUrl);
       
-      // For now, just close the modal
+      // Show success message and close modal
+      alert('Image processed successfully! (Demo mode - OCR data would be extracted here)') ;
       setTimeout(() => {
         setIsUploading(false);
         onClose();
@@ -139,7 +140,11 @@ export function ScanSeedPacketModal({
       
     } catch (error) {
       console.error('Error uploading image:', error);
-      alert('Failed to upload image. Please try again.');
+      if (error instanceof Error && error.message.includes('Supabase not configured')) {
+        alert('Upload service not configured. This is a demo - the image was captured successfully!') ;
+      } else {
+        alert('Failed to upload image. Please try again.') ;
+      }
       setIsUploading(false);
     }
   };

@@ -67,7 +67,7 @@ export const appRouter = router({
             sunExposure: "full sun to partial shade",
             confidence: 92,
           },
-        };        };
+        };
         
         console.log("Local OCR completed:", mockData);
         

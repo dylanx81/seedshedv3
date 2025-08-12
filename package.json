@@ -9,13 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/storage-js": "^2.10.4",
+    "@supabase/supabase-js": "^2.54.0",
+    "@tanstack/react-query": "^5.84.2",
+    "@trpc/client": "^11.4.4",
+    "@trpc/react-query": "^11.4.4",
+    "@trpc/server": "^11.4.4",
     "clsx": "^2.1.1",
     "lucide-react": "^0.536.0",
     "next": "^15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tesseract.js": "^6.0.1",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",

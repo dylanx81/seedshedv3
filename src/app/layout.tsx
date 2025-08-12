@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
+import { TrpcProvider } from "@/components/TrpcProvider";
 
 export const metadata: Metadata = {
   title: "Garden App",
@@ -22,7 +23,9 @@ html {
 }
         `}</style>
       </head>
-      <body>{children}</body>
+      <body>
+        <TrpcProvider>{children}</TrpcProvider>
+      </body>
     </html>
   );
 }

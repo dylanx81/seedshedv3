@@ -10,6 +10,7 @@ import { FloatingActionButton } from "@/components/FloatingActionButton";
 import { ScanSeedPacketModal } from "@/components/ScanSeedPacketModal";
 import { ScanBarcodeModal } from "@/components/ScanBarcodeModal";
 import { AddPlantModal } from "@/components/AddPlantModal";
+import { TestOcr } from "@/components/TestOcr";
 
 export default function GardenDashboard() {
   const [hasPlants, setHasPlants] = useState(true); // Mock state - would come from actual data
@@ -151,8 +152,15 @@ export default function GardenDashboard() {
             />
           )}
 
-          {/* Footer */}
+          {/* Test OCR Component */}
           <StaggeredReveal delay={400}>
+            <div className="mt-8">
+              <TestOcr />
+            </div>
+          </StaggeredReveal>
+
+          {/* Footer */}
+          <StaggeredReveal delay={500}>
             <div className="mt-8 text-center text-sm text-earth-600">
               <p>🌱 Growing together, one plant at a time</p>
             </div>

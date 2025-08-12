@@ -1,4 +1,6 @@
 "use client";
+// Force fresh deployment - Local OCR processing enabled
+"use client";
 
 import { useState } from "react";
 import { Search, Filter, Plus } from "lucide-react";
